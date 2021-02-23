@@ -4,20 +4,21 @@
 # Jabber:	t0pep0@jabber.ru
 # BTC   :	1ipEA2fcVyjiUnBqUx7PVy5efktz2hucb
 # donate free =)
+# Forked and modified by Codarren Velvindron
+# Compatible Python3
+
 import hmac
 import hashlib
 import time
-import urllib
-import urllib2
+import urllib.request, urllib.parse, urllib.error
 import json
 
 
-class API(object):
+class Api(object):
     __username = ''
     __api_key = ''
     __api_secret = ''
     __nonce_v = ''
-
     # Init class
     def __init__(self, username, api_key, api_secret):
         self.__username = username
@@ -28,16 +29,22 @@ class API(object):
     def __nonce(self):
         self.__nonce_v = '{:.10f}'.format(time.time() * 1000).split('.')[0]
 
-    # generate segnature
+    # generate signature
     def __signature(self):
+        byte_secret = bytes(self.__api_secret, "ascii")
         string = self.__nonce_v + self.__username + self.__api_key  # create string
-        signature = hmac.new(self.__api_secret, string, digestmod=hashlib.sha256).hexdigest().upper()  # create signature
+        encode_string = string.encode ('utf-8')
+        signature = hmac.new(byte_secret, encode_string, digestmod=hashlib.sha256).hexdigest().upper()  # create signature
         return signature
 
     def __post(self, url, param):  # Post Request (Low Level API call)
-        params = urllib.urlencode(param)
-        req = urllib2.Request(url, params, {'User-agent': 'bot-cex.io-' + self.__username})
-        page = urllib2.urlopen(req).read()
+        post_url = url
+        header = { 'User-agent': 'bot-cex.io-', 'username' : 'self.__username' }
+        param['User-agent'] = 'Chrome/43.0.2357.65'
+        params = urllib.parse.urlencode(param)
+        post_data = params.encode( "ascii")
+        req = urllib.request.Request(url = post_url, data = post_data, headers = header)
+        page = urllib.request.urlopen(req).read()
         return page
 
     def api_call(self, method, param={}, private=0, couple=''):  # api call (Middle level)
@@ -51,7 +58,9 @@ class API(object):
                 'signature': self.__signature(),
                 'nonce': self.__nonce_v})
         answer = self.__post(url, param)  # Post Request
-        return json.loads(answer)  # generate dict and return
+        a = answer.decode("utf-8")
+        #return json.loads(answer)  # generate dict and return 
+        return a                    # generates a valid json output
 
     def ticker(self, couple='GHS/BTC'):
         return self.api_call('ticker', {}, 0, couple)
