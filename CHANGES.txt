@@ -2,6 +2,7 @@
 - _post :Removed redundant Chrome header from parameters
 - _post: Removed redundant username from header
 - tickers: Added new function to return all tickers for particular currency (default USD)
+- archived_orders: Added new function archived orders for pair (default XLM/USD)
 
 # 23/02/2021
 - Added python3 compatibility - it is no longer compatible with python2

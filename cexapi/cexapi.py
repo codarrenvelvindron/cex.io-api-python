@@ -58,7 +58,7 @@ class Api(object):
                 'nonce': self.__nonce_v})
         answer = self.__post(url, param)  # Post Request
         a = answer.decode("utf-8")
-        #return json.loads(answer)  # generate dict and return 
+        #return json.loads(answer)  # generate dict and return
         return a                    # generates a valid json output
 
     def ticker(self, couple='GHS/BTC'):
@@ -84,6 +84,9 @@ class Api(object):
 
     def place_order(self, ptype='buy', amount=1, price=1, couple='GHS/BTC'):
         return self.api_call('place_order', {"type": ptype, "amount": str(amount), "price": str(price)}, 1, couple)
+
+    def archived_orders(self, couple='XLM/USD'):
+        return self.api_call('archived_orders', {}, 1, couple)
 
     def price_stats(self, last_hours, max_resp_arr_size, couple='GHS/BTC'):
         return self.api_call(
