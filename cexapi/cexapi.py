@@ -39,8 +39,7 @@ class Api(object):
 
     def __post(self, url, param):  # Post Request (Low Level API call)
         post_url = url
-        header = { 'User-agent': 'bot-cex.io-', 'username' : 'self.__username' }
-        param['User-agent'] = 'Chrome/43.0.2357.65'
+        header = { 'User-agent': 'bot-cex.io-' }
         params = urllib.parse.urlencode(param)
         post_data = params.encode( "ascii")
         req = urllib.request.Request(url = post_url, data = post_data, headers = header)
@@ -64,6 +63,9 @@ class Api(object):
 
     def ticker(self, couple='GHS/BTC'):
         return self.api_call('ticker', {}, 0, couple)
+
+    def tickers(self, couple='USD'):
+        return self.api_call('tickers', {}, 0, couple)
 
     def order_book(self, couple='GHS/BTC'):
         return self.api_call('order_book', {}, 0, couple)

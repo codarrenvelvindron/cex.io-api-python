@@ -1,0 +1,13 @@
+# 24/02/2021
+- _post :Removed redundant Chrome header from parameters
+- _post: Removed redundant username from header
+- tickers: Added new function to return all tickers for particular currency (default USD)
+
+# 23/02/2021
+- Added python3 compatibility - it is no longer compatible with python2
+- _signature: Added conversion to bytes and encoding to utf-8 for it to work in python3
+- _api_call: Added a decode utf-8 to return proper json
+- _api_call: Commented conversion to python object to return valid json
+- Added name and date forked to cexapi.py
+- Removed urllib and urllib2 imports
+- Added imports to urllib.request, urllib.parse, urllib.error
