@@ -69,7 +69,7 @@ api_secret - your API secret code
 #### Connect and get balance:
 ```python
 import cexapi
-api = cexapi.api(username, api_key, api_secret)
+api = cexapi.Api(username, api_key, api_secret)
 print api.balance()
 ```
 
