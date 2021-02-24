@@ -2,9 +2,11 @@ cex.io-api-python
 =================
 
 CEX.IO API integration. Python sources.
+
 This is a cex.io api client that works out of the box.
 
 Original Author: https://github.com/matveyco/cex.io-api-python
+
 Forked and modifiedby Codarren Velvindron: https://github.com/codarrenvelvindron/cex.io-api-python
 
 ## History
@@ -29,7 +31,7 @@ Forked and modifiedby Codarren Velvindron: https://github.com/codarrenvelvindron
 
 ### 3. Create class 
 ```python
-  api = cexapi.api(username,api_key,api_secret)
+  api = cexapi.Api(username,api_key,api_secret)
 ```
 username - your username on cex.io
 api_key - your API key
