@@ -72,7 +72,7 @@ api_secret - your API secret code
 ```python
 import cexapi
 api = cexapi.Api(username, api_key, api_secret)
-print api.balance()
+print (api.balance())
 ```
 
 ```
@@ -81,7 +81,7 @@ print api.balance()
 
 #### Get balance:
 ```python
-print api.balance()
+print (api.balance())
 ```
 
 ```
@@ -90,7 +90,7 @@ print api.balance()
 
 #### Get API ticker:
 ```python
-print api.ticker('GHS/BTC')
+print (api.ticker('GHS/BTC'))
 ```
 ```
 {'volume': '7154.78339022', 'last': '0.1078', 'timestamp': '1383379041', 'bid': '0.10778', 'high': '0.10799999', 'low': '0.10670076', 'ask': '0.10780000000000001'}
@@ -98,7 +98,7 @@ print api.ticker('GHS/BTC')
 
 #### Get order book:
 ```python
-print api.order_book('BF1/BTC')
+print (api.order_book('BF1/BTC'))
 ```
 
 ```
@@ -107,7 +107,7 @@ print api.order_book('BF1/BTC')
 
 #### Get your current active orders:
 ```python
-print api.current_orders('BF1/BTC')
+print (api.current_orders('BF1/BTC'))
 ```
 
 ```
@@ -116,7 +116,7 @@ print api.current_orders('BF1/BTC')
 
 #### Place new order:
 ```python
-print api.place_order('buy', 0.001, 1.7, 'BF1/BTC')
+print (api.place_order('buy', 0.001, 1.7, 'BF1/BTC'))
 ```
 ```
 {'price': '1.7', 'amount': '0.00100000', 'time': 1383378987622, 'type': 'buy', 'id': '6219145', 'pending': '0.00100000'}
@@ -124,7 +124,7 @@ print api.place_order('buy', 0.001, 1.7, 'BF1/BTC')
 
 #### Place another order (GHS/BTC):
 ```python
-print api.place_order('buy', 0.01, 0.10789, 'GHS/BTC')
+print (api.place_order('buy', 0.01, 0.10789, 'GHS/BTC'))
 ```
 ```
 {'price': '0.10789', 'amount': '0.01000000', 'time': 1383379024072, 'type': 'buy', 'id': '6219150', 'pending': '0.00000000'}
@@ -132,9 +132,12 @@ print api.place_order('buy', 0.01, 0.10789, 'GHS/BTC')
 
 #### Cancel order:
 ```python
-print api.cancel_order(6219145)
+print (api.cancel_order(6219145))
 ```
 ```
 True
 ```
-
+#### Archived orders
+```python
+print (api.archived_orders('XLM/USD')
+```
